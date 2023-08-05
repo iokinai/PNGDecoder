@@ -17,19 +17,25 @@ namespace parser {
         explicit Parser(const std::vector<uint8_t>& data);
 
         structure::PNGImage parse();
-        std::string parseChunkName(const std::vector<uint8_t>::iterator& startsAt);
-        bool hasPLTE();
+        ChunkType parseChunkType(const std::vector<uint8_t>::iterator& startsAt);
         bool hasIHDR();
 
-        void parseChunk(const std::string& name, std::vector<uint8_t>::iterator& start, bool& iend);
+        void parseChunk(ChunkType type, std::vector<uint8_t>::iterator& start, bool& iend);
         void parseIHDR(std::vector<uint8_t>::iterator& start);
+        void parseIDAT(std::vector<uint8_t>::iterator& start);
+        void parsePLTE(std::vector<uint8_t>::iterator& start);
+        void parseIEND(std::vector<uint8_t>::iterator& start, bool& iend);
 
-        template<typename T>
-        T readBytesToValue(typename std::vector<uint8_t>::const_iterator startIndex);
+        void skipChunk(std::vector<uint8_t>::iterator& start);
+
+        template<typename T> T readBytesToValue(typename std::vector<uint8_t>::const_iterator startIndex);
 
     private:
+        const uint8_t chunkSizeWithoutData = 4 * 3;
         std::vector<uint8_t> data;
         PNGImageConstructor imageConstructor;
+
+        bool isFirstChunkA(ChunkType type);
     };
 
 } // parser

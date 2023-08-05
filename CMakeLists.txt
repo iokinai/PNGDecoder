@@ -26,4 +26,10 @@ add_executable(png_decoder main.cpp
         utils/SizeException.h
         utils/IndexException.cpp
         utils/IndexException.h
+        decoder/png/chunks/IDATData.cpp
+        decoder/png/chunks/IDATData.h
+        decoder/png/chunks/IDATData.h
+        decoder/png/chunks/misc/ChunkType.h
+        decoder/png/chunks/misc/ChunkType.h
+        utils/CompileTime.h
 )

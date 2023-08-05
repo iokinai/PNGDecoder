@@ -15,6 +15,10 @@ namespace structure::constructor {
         this->image.IHDR = std::move(ihdr);
     }
 
+    void PNGImageConstructor::addIDAT(Chunk<IDATData> idat) {
+        this->image.IDAT = std::move(idat);
+    }
+
     PNGImage PNGImageConstructor::getFinalImage() const {
         return this->image;
     }

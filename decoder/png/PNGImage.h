@@ -8,6 +8,7 @@
 #include "SignatureData.h"
 #include "chunks/Chunk.h"
 #include "chunks/IHDRData.h"
+#include "chunks/IDATData.h"
 
 using namespace structure::signature;
 using namespace structure::chunks;
@@ -28,6 +29,7 @@ namespace structure {
     private:
         SignatureData signature;
         Chunk<IHDRData> IHDR;
+        Chunk<IDATData> IDAT;
 
         friend structure::constructor::PNGImageConstructor;
     };

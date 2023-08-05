@@ -13,8 +13,8 @@ namespace fs {
 
     class PNGFile {
     public:
-        const std::string &getFilePath() const;
-        const std::vector<uint8_t> &getFileData() const;
+        [[nodiscard]] const std::string &getFilePath() const;
+        [[nodiscard]] const std::vector<uint8_t> &getFileData() const;
 
         explicit PNGFile(std::string path);
 
@@ -22,7 +22,7 @@ namespace fs {
         bool isValidPNG();
 
         class WrongPNG : public std::exception {
-            const char * what() const noexcept override;
+            [[nodiscard]] const char * what() const noexcept override;
         };
 
     private:

@@ -4,7 +4,7 @@
 
 int main() {
     std::string png = "C:\\Users\\MegaD\\Downloads\\tinypng.png";
-    
+
     fs::PNGFile file(png);
 
     file.read();

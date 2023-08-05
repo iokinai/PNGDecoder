@@ -15,6 +15,8 @@ namespace structure::constructor {
         explicit PNGImageConstructor(PNGImage base);
 
         void addIHDR(Chunk<IHDRData> ihdr);
+        void addIDAT(Chunk<IDATData> idat);
+
         [[nodiscard]] PNGImage getFinalImage() const;
 
     private:

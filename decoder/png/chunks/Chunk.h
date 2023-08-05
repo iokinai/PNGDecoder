@@ -7,6 +7,7 @@
 
 #include <cstdint>
 #include "../../../utils/LimitedSequence.h"
+#include "misc/ChunkType.h"
 
 using ChunkNameString = utils::LimitedSequence<char, 5>;
 
@@ -16,14 +17,14 @@ namespace structure::chunks {
     class Chunk {
     private:
         uint32_t DataSize{};
-        ChunkNameString ChunkName;
+        ChunkType Type;
         std::vector<uint8_t> RawData;
         uint32_t CRC32{};
 
         ChunkData Data;
 
     public:
-        Chunk(uint32_t dataSize, ChunkNameString chunkName, const std::vector<uint8_t> &rawData, uint32_t crc32,
+        Chunk(uint32_t dataSize, ChunkType type, const std::vector<uint8_t> &rawData, uint32_t crc32,
               ChunkData data);
 
         Chunk() = default;
